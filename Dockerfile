@@ -11,7 +11,7 @@ COPY ./ ./
 CMD [ "npm", "run", "build" ]
 
 FROM nginx
-
+EXPOSE 80
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 # --from : 빌드된 부분 위에 from
 # /usr/src/app/build : npm run build 를 하면, build 폴더 생김
