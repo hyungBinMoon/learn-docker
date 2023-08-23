@@ -6,12 +6,14 @@ services:
   - docker
 
 before_install:
-  - echo "start creating an image"
+  - echo "start creating an image with dockerfile"
   - docker build -t gudqls97/docker-react-app -f Dockerfile.dev .
 
-script:
-  - docker run -e CI=true gudqls97/docker-react-app npm run test
+script: 
+  - docker run -e CI=true gudqls97/docker-react-app npm run test -- --coverage
 
 after_success:
   - echo "Test Success!"
+
+
 
